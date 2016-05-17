@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Связи</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>От элемента</th>
+      <th>Тип связи</th>
+      <th>К элементу</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rels.each do |rel| %>
+      <tr>
+        <td><%= rel.node1.name %></td>
+        <td><%= rel.rel_type.name %></td>
+        <td><%= rel.node2.name %></td>
+        <td><%= link_to 'Show', rel %></td>
+        <td><%= link_to 'Edit', edit_rel_path(rel) %></td>
+        <td><%= link_to 'Destroy', rel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rel', new_rel_path %>

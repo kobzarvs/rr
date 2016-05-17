@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rel_type: one
+  node1: 
+  node2: 
+
+two:
+  rel_type: two
+  node1: 
+  node2: 

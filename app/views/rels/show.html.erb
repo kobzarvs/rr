@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>От элемента:</strong>
+  <%= @rel.node1.name %>
+</p>
+
+<p>
+  <strong>Тип связи:</strong>
+  <%= @rel.rel_type.name %>
+</p>
+
+<p>
+  <strong>К элементу:</strong>
+  <%= @rel.node2.name %>
+</p>
+
+<%= link_to 'Edit', edit_rel_path(@rel) %> |
+<%= link_to 'Back', rels_path %>

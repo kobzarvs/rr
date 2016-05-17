@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sub Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sub_types.each do |sub_type| %>
+      <tr>
+        <td><%= sub_type.name %></td>
+        <td><%= link_to 'Show', sub_type %></td>
+        <td><%= link_to 'Edit', edit_sub_type_path(sub_type) %></td>
+        <td><%= link_to 'Destroy', sub_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sub Type', new_sub_type_path %>

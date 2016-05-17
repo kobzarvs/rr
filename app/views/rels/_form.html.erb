@@ -1,0 +1,32 @@
+<%= form_for(rel) do |f| %>
+  <% if rel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rel.errors.count, "error") %> prohibited this rel from being saved:</h2>
+
+      <ul>
+      <% rel.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :node1_id, 'От элемента:' %>
+    <%= f.collection_select :node1_id, Subject.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rel_type_id, 'Тип связи:' %>
+    <%= f.collection_select :rel_type_id, RelType.all, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :node2_id, 'К элементу:' %>
+    <%= f.collection_select :node2_id, Subject.all, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

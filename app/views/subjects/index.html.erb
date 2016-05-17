@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Элементы</h1>
+<div><%= @tree %></div>
+
+<% unless @subjects.nil? %>
+<table>
+  <thead>
+    <tr>
+      <th>Элемент</th>
+      <th>Тип элемента</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subjects.each do |subject| %>
+      <tr>
+        <td><%= subject.name %></td>
+        <td><%= subject.sub_type.name %></td>
+        <td><%= link_to 'Root', subjects_set_tree_path(subject) %></td>
+        <td><%= link_to 'Show', subject %></td>
+        <td><%= link_to 'Edit', edit_subject_path(subject) %></td>
+        <td><%= link_to 'Destroy', subject, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+  <b><%= @root.name %></b>
+  
+  <% @root.each_relation(:out) do |response| %>
+    <% case response[:state] %>
+    <% when :new_level %>
+      <div style="padding-left: 20px">
+    <% when :end_level %>
+      </div>
+    <% when :new_rel %>
+      <b><%= response[:rel].name %></b>
+      <div class="relation" style="padding-left: 20px; border-left: 1px solid red">
+    <% when :end_rel %>
+      </div>
+    <% when :start_node %>
+      <div class="node"><%= response[:node].name %></div>
+    <% when :end_node %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<br>
+
+<%= link_to 'New Subject', new_subject_path %>
